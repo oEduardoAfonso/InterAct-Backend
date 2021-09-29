@@ -1,4 +1,4 @@
-DEBUG=True
+DEBUG = True
 USERNAME = 'postgre'
 PASSWORD = '1234'
 SERVER = 'localhost'
