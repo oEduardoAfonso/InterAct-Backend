@@ -1,6 +1,6 @@
 DEBUG = True
-USERNAME = 'postgre'
-PASSWORD = '1234'
+USERNAME = 'postgres'
+PASSWORD = 'postgres'
 SERVER = 'localhost'
 DB = 'InterAct'
 
