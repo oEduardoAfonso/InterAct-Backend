@@ -1,4 +1,5 @@
 from app import db
+from . import sala_model
 
 class Usuario(db.Model):
     __tablename__ = "usuario"
