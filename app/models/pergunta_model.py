@@ -1,3 +1,4 @@
+from sqlalchemy.orm import backref
 from app import db
 
 class Pergunta(db.Model):
@@ -32,8 +33,12 @@ class Pergunta(db.Model):
         nullable=False,
     )
 
+    autor = db.relationship('Usuario', foreign_keys=['id_usuario'], backref='perguntas')
+
     id_sala = db.Column(
         db.Integer,
         db.ForeignKey('sala.id_sala'),
         nullable=False,
     )
+
+    autor = db.relationship('Sala', foreign_keys=['id_sala'], backref='perguntas')

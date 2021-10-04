@@ -16,7 +16,7 @@ class UsuarioList(Resource):
     def post(self):
         us = usuario_schema.UsuarioSchema()
         usuario = us.load(request.json)
-
+        
         resultado = usuario_service.cadastrar_usuario(usuario)
         return make_response(us.jsonify(resultado), 201)
 

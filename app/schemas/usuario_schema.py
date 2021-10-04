@@ -7,4 +7,4 @@ class UsuarioSchema(ma.SQLAlchemySchema):
         model = usuario_model.Usuario
 
     id_user = fields.Integer()
-    id_sala = fields.Integer()
+    id_sala = fields.Integer(default=None, allow_none=True, missing=None)
