@@ -1,5 +1,4 @@
 from app import db
-from . import sala_model
 
 class Usuario(db.Model):
     __tablename__ = "usuario"
@@ -16,3 +15,5 @@ class Usuario(db.Model):
         db.ForeignKey('sala.id_sala'),
         nullable=True,
     )
+
+    sala = db.relationship('Sala', foreign_keys=[id_sala], post_update=True)

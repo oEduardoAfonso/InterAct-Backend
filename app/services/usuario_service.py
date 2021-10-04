@@ -23,5 +23,6 @@ def editar_usuario(usuario_bd, usuario):
     db.session.commit()
 
 def deletar_usuario(usuario):
+    db.session.delete(usuario.sala)
     db.session.delete(usuario)
     db.session.commit()

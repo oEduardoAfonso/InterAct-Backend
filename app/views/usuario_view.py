@@ -17,14 +17,14 @@ class UsuarioList(Resource):
         us = usuario_schema.UsuarioSchema()
         usuario = us.load(request.json)
 
-        result = usuario_service.cadastrar_usuario(usuario)
-        return make_response(us.jsonify(result), 201)
+        resultado = usuario_service.cadastrar_usuario(usuario)
+        return make_response(us.jsonify(resultado), 201)
 
 class UsuarioDetail(Resource):
     def get(self, id):
         usuario = usuario_service.listar_usuario_id(id)
         if usuario is None:
-            return make_response(jsonify('Usuário não encontrado'), 404)
+            return make_response(jsonify('Usuário nao encontrado'), 404)
         
         us = usuario_schema.UsuarioSchema()
         return make_response(us.jsonify(usuario), 200)
