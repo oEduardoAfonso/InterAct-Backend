@@ -1,3 +1,4 @@
+from sqlalchemy.orm import backref
 from app import db
 
 class Usuario(db.Model):
@@ -16,4 +17,4 @@ class Usuario(db.Model):
         nullable=True,
     )
 
-    sala = db.relationship('Sala', foreign_keys=[id_sala], post_update=True)
+    sala_participa = db.relationship('Sala', foreign_keys=[id_sala], backref=backref('participantes'))

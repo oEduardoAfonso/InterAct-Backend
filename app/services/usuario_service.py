@@ -23,6 +23,7 @@ def editar_usuario(usuario_bd, usuario):
     db.session.commit()
 
 def deletar_usuario(usuario):
-    db.session.delete(usuario.sala)
+    if(usuario.id_user == usuario.sala_participa.id_moderador):
+        db.session.delete(usuario.sala_participa)
     db.session.delete(usuario)
     db.session.commit()

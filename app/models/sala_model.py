@@ -18,5 +18,4 @@ class Sala(db.Model):
         unique=True,
     )
 
-    moderador = db.relationship('Usuario', foreign_keys=[id_moderador], cascade='all, delete')
-    # usuarios = db.relationship('Usuario', foreign_keys=['usuario.id_sala'],  backref='id_sala')
+    moderador = db.relationship('Usuario', foreign_keys=[id_moderador], backref=backref('sala_modera', cascade='all,delete'))
