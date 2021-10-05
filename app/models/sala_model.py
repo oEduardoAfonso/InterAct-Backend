@@ -5,6 +5,7 @@ class Sala(db.Model):
     __tablename__ = "sala"
 
     id_sala = db.Column(
+        'id_sala',
         db.Integer,
         primary_key=True,
         autoincrement=True,
@@ -12,6 +13,7 @@ class Sala(db.Model):
     )
 
     id_moderador = db.Column(
+        'id_moderador',
         db.Integer,
         db.ForeignKey('usuario.id_user'),
         nullable=False,
