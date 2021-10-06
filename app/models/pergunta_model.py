@@ -28,6 +28,7 @@ class Pergunta(db.Model):
     is_respondida = db.Column(
         'is_respondida',
         db.Boolean,
+        default=False,
         nullable=False,
     )
 
