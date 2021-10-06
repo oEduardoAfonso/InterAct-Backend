@@ -13,5 +13,4 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 migrate = Migrate(app, db)
 
-
 from .views import usuario_view, sala_view, pergunta_view

@@ -1,8 +1,8 @@
-"""Adicionando coluna id_sala no usuario
+"""empty message
 
-Revision ID: c316d558aa07
-Revises: eaec3fca713a
-Create Date: 2021-09-28 23:03:43.679728
+Revision ID: a77b1a66fca4
+Revises: c44b456e94cd
+Create Date: 2021-10-05 23:15:50.927011
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'c316d558aa07'
-down_revision = 'eaec3fca713a'
+revision = 'a77b1a66fca4'
+down_revision = 'c44b456e94cd'
 branch_labels = None
 depends_on = None
 

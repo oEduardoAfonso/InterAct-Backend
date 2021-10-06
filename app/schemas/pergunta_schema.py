@@ -1,21 +1,21 @@
 from app import ma
-from models import pergunta_model
-from marshmallow import fields
+from ..schemas import usuario_schema
+from ..models import pergunta_model
+from marshmallow import fields, validate
 
-class PerguntaSchema(ma.ModelSchema):
+class PerguntaSchema(ma.SQLAlchemySchema):
     class Meta:
         model = pergunta_model.Pergunta
-        fields = (
-            'id_pergunta',
-            'data_hora',
-            'is_respondida',
-            'likes',
-            'id_usuario',
-            'id_sala'
-        )
 
-    data_hora = fields.DateTime(auto_now_add=True, required=True)
+    id_pergunta = fields.Integer()
+    conteudo = fields.String(required=True, validate=validate.Length(min=1, max=200))
+    data_hora = fields.DateTime()
     is_respondida = fields.Boolean(required=True)
-    likes = fields.Integer(required=True)
     id_usuario = fields.Integer(required=True)
     id_sala = fields.Integer(required=True)
+
+    concordaram = fields.List(
+        fields.Nested(
+            usuario_schema.UsuarioSchema(only=['id_usuario'])
+        )
+    )

@@ -1,13 +1,17 @@
 from app import ma
-from models import usuario_model
+from ..models import usuario_model
 from marshmallow import fields
 
-class UsuarioSchema(ma.ModelSchema):
+class UsuarioSchema(ma.SQLAlchemySchema):
     class Meta:
         model = usuario_model.Usuario
-        field = (
-            'id_user',
-            'id_sala'
-        )
-    
-    id_sala = fields.Integer(required=False)
+
+    id_usuario = fields.Integer()
+    id_sala = fields.Integer(default=None, allow_none=True, missing=None)
+
+class UsuariosConcordam(ma.SQLAlchemySchema):
+    class Meta:
+        model = usuario_model.UsuariosConcordam
+
+    id_pergunta = fields.Integer()
+    id_usuario = fields.Integer()
