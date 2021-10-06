@@ -1,9 +1,0 @@
-flask==2.0.1
-flask-restful==0.3.9
-marshmallow==3.13.0
-SQLAlchemy==1.4.25
-marshmallow-sqlalchemy==0.26.1
-flask-marshmallow==0.14.0
-flask-sqlalchemy==2.5.1
-flask-cors==3.0.10
-passlib==1.7.4
