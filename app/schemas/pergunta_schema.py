@@ -10,7 +10,7 @@ class PerguntaSchema(ma.SQLAlchemySchema):
     id_pergunta = fields.Integer()
     conteudo = fields.String(required=True, validate=validate.Length(min=1, max=200))
     data_hora = fields.DateTime()
-    is_respondida = fields.Boolean(required=True)
+    is_respondida = fields.Boolean(allow_none=True, missing=None)
     id_usuario = fields.Integer(required=True)
     id_sala = fields.Integer(required=True)
 
