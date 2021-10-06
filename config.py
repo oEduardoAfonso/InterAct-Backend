@@ -1,8 +1,12 @@
+import os
+
 DEBUG = True
 USERNAME = 'postgres'
 PASSWORD = 'postgres'
 SERVER = 'localhost'
 DB = 'InterAct'
+DATABASE_URL = f'postgresql://{USERNAME}:{PASSWORD}@{SERVER}/{DB}'
 
-SQLALCHEMY_DATABASE_URI = f'postgresql://{USERNAME}:{PASSWORD}@{SERVER}/{DB}'
+# SQLALCHEMY_DATABASE_URI = f'postgresql://{USERNAME}:{PASSWORD}@{SERVER}/{DB}'
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', DATABASE_URL)
 SQLALCHEMY_TRACK_MODIFICATIONS = True
