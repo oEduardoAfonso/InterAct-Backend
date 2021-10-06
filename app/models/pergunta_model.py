@@ -1,4 +1,4 @@
-from sqlalchemy.orm import backref
+from datetime import datetime
 from app import db
 
 class Pergunta(db.Model):
@@ -21,6 +21,7 @@ class Pergunta(db.Model):
     data_hora = db.Column(
         'data_hora',
         db.DateTime,
+        default=datetime.now(),
         nullable=False,
     )
 
@@ -30,17 +31,10 @@ class Pergunta(db.Model):
         nullable=False,
     )
 
-    likes = db.Column(
-        'likes',
-        db.Integer,
-        nullable=False,
-        default=0,
-    )
-
     id_usuario = db.Column(
         'id_usuario',
         db.Integer,
-        db.ForeignKey('usuario.id_user'),
+        db.ForeignKey('usuario.id_usuario'),
         nullable=False,
     )
 

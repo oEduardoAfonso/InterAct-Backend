@@ -50,6 +50,5 @@ class UsuarioDetail(Resource):
         return make_response('', 204)
 
 
-
 api.add_resource(UsuarioList, '/usuarios')
 api.add_resource(UsuarioDetail, '/usuarios/<int:id>')

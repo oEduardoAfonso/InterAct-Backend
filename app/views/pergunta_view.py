@@ -49,6 +49,16 @@ class PerguntaDetail(Resource):
         pergunta_service.deletar_pergunta(pergunta)
         return make_response('', 204)
 
+class ConcordarPergunta(Resource):
+    def post(self, id):
+        ps_id = pergunta_schema.PerguntaSchema(only=['id_usuario'])
+        id_usuario = ps_id.load(request.json).get('id_usuario')
+
+        pergunta = pergunta_service.concordar_pergunta(id, id_usuario)
+        ps = pergunta_schema.PerguntaSchema()
+        return make_response(ps.jsonify(pergunta), 200)
+
 
 api.add_resource(PerguntaList, '/perguntas')
 api.add_resource(PerguntaDetail, '/perguntas/<int:id>')
+api.add_resource(ConcordarPergunta, '/perguntas/concordar/<int:id>')

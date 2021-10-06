@@ -15,7 +15,7 @@ class Sala(db.Model):
     id_moderador = db.Column(
         'id_moderador',
         db.Integer,
-        db.ForeignKey('usuario.id_user'),
+        db.ForeignKey('usuario.id_usuario'),
         nullable=False,
         unique=True,
     )

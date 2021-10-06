@@ -1,12 +1,11 @@
+from .usuario_service import listar_usuario_id
 from ..models import pergunta_model
 from app import db
 
 def cadastrar_pergunta(pergunta):
     pergunta_new = pergunta_model.Pergunta(
         conteudo=pergunta['conteudo'],
-        data_hora=pergunta['data_hora'],
         is_respondida=pergunta['is_respondida'],
-        likes=pergunta['likes'],
         id_usuario=pergunta['id_usuario'],
         id_sala=pergunta['id_sala']
     )
@@ -28,7 +27,6 @@ def editar_pergunta(pergunta_bd, pergunta):
         conteudo=pergunta['conteudo'],
         data_hora=pergunta['data_hora'],
         is_respondida=pergunta['is_respondida'],
-        likes=pergunta['likes'],
         id_usuario=pergunta['id_usuario'],
         id_sala=pergunta['id_sala']
     )
@@ -36,7 +34,6 @@ def editar_pergunta(pergunta_bd, pergunta):
     pergunta_bd.conteudo = pergunta_new.conteudo
     pergunta_bd.data_hora = pergunta_new.data_hora
     pergunta_bd.is_respondida = pergunta_new.is_respondida
-    pergunta_bd.likes = pergunta_new.likes
     pergunta_bd.id_usuario = pergunta_new.id_usuario
     pergunta_bd.id_sala = pergunta_new.id_sala
 
@@ -45,3 +42,15 @@ def editar_pergunta(pergunta_bd, pergunta):
 def deletar_pergunta(pergunta):
     db.session.delete(pergunta)
     db.session.commit()
+
+def concordar_pergunta(id_pergunta, id_usuario):
+    usuario = listar_usuario_id(id_usuario)
+    pergunta = listar_pergunta_id(id_pergunta)
+
+    if usuario in pergunta.concordaram:
+        pergunta.concordaram.remove(usuario)
+    else:
+        pergunta.concordaram.append(usuario)
+        
+    db.session.commit()
+    return pergunta

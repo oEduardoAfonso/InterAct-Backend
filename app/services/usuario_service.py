@@ -13,7 +13,7 @@ def listar_usuarios():
     return usuarios
 
 def listar_usuario_id(id):
-    usuario = usuario_model.Usuario.query.filter_by(id_user=id).first()
+    usuario = usuario_model.Usuario.query.filter_by(id_usuario=id).first()
     return usuario
 
 def editar_usuario(usuario_bd, usuario):
@@ -23,7 +23,7 @@ def editar_usuario(usuario_bd, usuario):
     db.session.commit()
 
 def deletar_usuario(usuario):
-    if(usuario.id_user == usuario.sala_participa.id_moderador):
+    if(usuario.id_usuario == usuario.sala_participa.id_moderador):
         db.session.delete(usuario.sala_participa)
     db.session.delete(usuario)
     db.session.commit()

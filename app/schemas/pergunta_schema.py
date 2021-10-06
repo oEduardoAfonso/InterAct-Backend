@@ -1,4 +1,5 @@
 from app import ma
+from ..schemas import usuario_schema
 from ..models import pergunta_model
 from marshmallow import fields, validate
 
@@ -8,8 +9,13 @@ class PerguntaSchema(ma.SQLAlchemySchema):
 
     id_pergunta = fields.Integer()
     conteudo = fields.String(required=True, validate=validate.Length(min=1, max=200))
-    data_hora = fields.DateTime(auto_now_add=True, required=True)
+    data_hora = fields.DateTime()
     is_respondida = fields.Boolean(required=True)
-    likes = fields.Integer(default=0, allow_none=True, missing=0)
     id_usuario = fields.Integer(required=True)
     id_sala = fields.Integer(required=True)
+
+    concordaram = fields.List(
+        fields.Nested(
+            usuario_schema.UsuarioSchema(only=['id_usuario'])
+        )
+    )
