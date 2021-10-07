@@ -1,4 +1,6 @@
 from datetime import datetime
+
+from sqlalchemy.orm import backref
 from app import db
 
 class Pergunta(db.Model):
@@ -39,7 +41,7 @@ class Pergunta(db.Model):
         nullable=False,
     )
 
-    autor = db.relationship('Usuario', foreign_keys=[id_usuario], backref='perguntas')
+    autor = db.relationship('Usuario', foreign_keys=[id_usuario], backref=backref('perguntas', cascade='all,delete'))
 
     id_sala = db.Column(
         'id_sala',
@@ -48,4 +50,4 @@ class Pergunta(db.Model):
         nullable=False,
     )
 
-    sala = db.relationship('Sala', foreign_keys=[id_sala], backref='perguntas')
+    sala = db.relationship('Sala', foreign_keys=[id_sala], backref=backref('perguntas', cascade='all,delete'))
