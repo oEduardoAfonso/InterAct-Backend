@@ -18,7 +18,7 @@ class SalaSchema(ma.SQLAlchemySchema):
 
     banidos = fields.List(
         fields.Nested(
-            usuario_schema.UsuarioSchema(exclude=['id_sala'])
+            usuario_schema.UsuarioSchema(only=['id_usuario'])
         )
     )
 
