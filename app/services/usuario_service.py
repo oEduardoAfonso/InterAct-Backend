@@ -2,7 +2,7 @@ from ..models import usuario_model
 from app import db
 
 def cadastrar_usuario(usuario):
-    usuario_new = usuario_model.Usuario(id_sala=usuario['id_sala'])
+    usuario_new = usuario_model.Usuario(nome_usuario=usuario['nome_usuario'], id_sala=usuario['id_sala'])
 
     db.session.add(usuario_new)
     db.session.commit()

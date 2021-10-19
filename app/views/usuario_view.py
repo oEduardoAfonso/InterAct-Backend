@@ -2,7 +2,6 @@ from flask.helpers import make_response
 from flask_restful import Resource
 from app import api
 from ..schemas import usuario_schema
-from ..entitys import usuario
 from ..services import usuario_service
 from flask import json, request, make_response, jsonify
 

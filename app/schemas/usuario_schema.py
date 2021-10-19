@@ -7,6 +7,7 @@ class UsuarioSchema(ma.SQLAlchemySchema):
         model = usuario_model.Usuario
 
     id_usuario = fields.Integer()
+    nome_usuario = fields.String()
     id_sala = fields.Integer(default=None, allow_none=True, missing=None)
 
 class UsuariosConcordam(ma.SQLAlchemySchema):
