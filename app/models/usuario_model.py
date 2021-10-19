@@ -27,6 +27,7 @@ class Usuario(db.Model):
 
     sala_participa = db.relationship('Sala', foreign_keys=[id_sala], backref=backref('participantes'))
     concordou = db.relationship('Pergunta', secondary='usuarios_concordam', backref='concordaram')
+    banido = db.relationship('Sala', secondary='participantes_banidos', backref='banidos')
 
 class UsuariosConcordam(db.Model):
     __tablename__ = "usuarios_concordam"
