@@ -12,6 +12,12 @@ class Usuario(db.Model):
         nullable=False,
     )
 
+    nome_usuario = db.Column(
+        'nome_usuario',
+        db.String(100),
+        nullable=False,
+    )
+
     id_sala = db.Column(
         'id_sala',
         db.Integer,
