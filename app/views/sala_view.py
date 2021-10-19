@@ -1,7 +1,7 @@
 from flask.helpers import make_response
 from flask_restful import Resource
 from app import api
-from ..schemas import sala_schema
+from ..schemas import sala_schema, usuario_schema
 from ..services import sala_service, usuario_service
 from flask import request, jsonify
 
@@ -54,5 +54,15 @@ class SalaDetail(Resource):
         sala_service.deletar_sala(sala)
         return make_response('', 204)
 
+class BanirParticipante(Resource):
+    def post(self, id):
+        us_id = usuario_schema.UsuarioSchema(only=['id_usuario'])
+        id_usuario = us_id.load(request.json).get('id_usuario')
+
+        sala = sala_service.banir_participante(id, id_usuario)
+        ss = sala_schema.SalaSchema()
+        return make_response(ss.jsonify(sala), 200)
+
 api.add_resource(SalaList, '/salas')
 api.add_resource(SalaDetail, '/salas/<int:id>')
+api.add_resource(BanirParticipante, '/salas/banir/<int:id>')
