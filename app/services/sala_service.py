@@ -1,3 +1,4 @@
+from .usuario_service import listar_usuario_id
 from ..models import sala_model
 from app import db
 
@@ -25,3 +26,15 @@ def editar_sala(sala_bd, sala):
 def deletar_sala(sala):
     db.session.delete(sala)
     db.session.commit()
+
+def banir_participante(id_sala, id_usuario):
+    sala = listar_sala_id(id_sala)
+    usuario = listar_usuario_id(id_usuario)
+
+    if usuario in sala.banidos:
+        sala.banidos.remove(usuario)
+    else:
+        sala.banidos.append(usuario)
+        
+    db.session.commit()
+    return sala
