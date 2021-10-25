@@ -75,6 +75,17 @@ def concordar_pergunta_handler(concordar):
     perguntas = ss.jsonify(sala).json['perguntas']
     emit('recebe.perguntas', perguntas, json=True , broadcast=True)
 
+@io.on('ler.pergunta')
+def ler_pergunta_handler(pergunta):
+    pergunta_bd = pergunta_service.listar_pergunta_id(pergunta['id_pergunta'])
+    respondida = {"is_respondida": True}
+    pergunta_service.editar_pergunta(pergunta_bd, respondida)
+
+    sala = sala_service.listar_sala_id(pergunta['id_sala'])
+    ss = sala_schema.SalaSchema()
+    perguntas = ss.jsonify(sala).json['perguntas']
+    emit('recebe.perguntas', perguntas, json=True , broadcast=True)
+
 api.add_resource(PerguntaList, '/perguntas')
 api.add_resource(PerguntaDetail, '/perguntas/<int:id>')
 api.add_resource(ConcordarPergunta, '/perguntas/concordar/<int:id>')
