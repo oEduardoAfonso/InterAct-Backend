@@ -5,7 +5,6 @@ from app import db
 def cadastrar_pergunta(pergunta):
     pergunta_new = pergunta_model.Pergunta(
         conteudo=pergunta['conteudo'],
-        is_respondida=pergunta['is_respondida'],
         id_usuario=pergunta['id_usuario'],
         id_sala=pergunta['id_sala']
     )

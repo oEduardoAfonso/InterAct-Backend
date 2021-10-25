@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "172f031350f981aa114f014b8edbcf4f05221e5469d9e8cfa75799856418e33e"
+            "sha256": "b7bcecced129c9199d859da714330d0a5e7eac7f30fbd0fc9d35ea7dfb070a98"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -158,6 +158,14 @@
             ],
             "markers": "python_version >= '3' and platform_machine == 'aarch64' or (platform_machine == 'ppc64le' or (platform_machine == 'x86_64' or (platform_machine == 'amd64' or (platform_machine == 'AMD64' or (platform_machine == 'win32' or platform_machine == 'WIN32')))))",
             "version": "==1.1.2"
+        },
+        "h11": {
+            "hashes": [
+                "sha256:36a3cb8c0a032f56e2da7084577878a035d3b61d104230d4bd49c0c6b555a9c6",
+                "sha256:47222cb6067e4a307d535814917cd98fd0a57b6788ce715755fa2b6c28b56042"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==0.12.0"
         },
         "importlib-metadata": {
             "hashes": [
@@ -353,6 +361,14 @@
             ],
             "version": "==2021.3"
         },
+        "simple-websocket": {
+            "hashes": [
+                "sha256:6553fcf8c1b5fbb5ef36f64c0399c6909d077d5064286caadd0f64d78c9df10a",
+                "sha256:b2e00d4e2d3dcb91435171508242d45599fa223a9c13daa0721f06c743f890e7"
+            ],
+            "index": "pypi",
+            "version": "==0.4.0"
+        },
         "six": {
             "hashes": [
                 "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
@@ -410,6 +426,14 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==2.0.2"
+        },
+        "wsproto": {
+            "hashes": [
+                "sha256:868776f8456997ad0d9720f7322b746bbe9193751b5b290b7f924659377c8c38",
+                "sha256:d8345d1808dd599b5ffb352c25a367adb6157e664e140dbecba3f9bc007edb9f"
+            ],
+            "markers": "python_full_version >= '3.6.1'",
+            "version": "==1.0.0"
         },
         "zipp": {
             "hashes": [

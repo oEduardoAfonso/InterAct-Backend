@@ -13,7 +13,7 @@ app.config.from_object('config')
 api = Api(app)
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
-io = SocketIO(app)
+io = SocketIO(app, cors_allowed_origins='*')
 migrate = Migrate(app, db)
 CORS(app)
 

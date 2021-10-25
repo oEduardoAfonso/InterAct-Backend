@@ -13,6 +13,7 @@ flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 flask-cors = "*"
 flask-socketio = "*"
+simple-websocket = "*"
 
 [dev-packages]
 
