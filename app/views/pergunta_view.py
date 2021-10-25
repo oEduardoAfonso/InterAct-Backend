@@ -60,9 +60,17 @@ class ConcordarPergunta(Resource):
         return make_response(ps.jsonify(pergunta), 200)
 
 @io.on('envia.pergunta')
-def envia_mensagem_handler(pergunta):
+def envia_pergunta_handler(pergunta):
     pergunta_service.cadastrar_pergunta(pergunta)
     sala = sala_service.listar_sala_id(pergunta['id_sala'])
+    ss = sala_schema.SalaSchema()
+    perguntas = ss.jsonify(sala).json['perguntas']
+    emit('recebe.perguntas', perguntas, json=True , broadcast=True)
+
+@io.on('concorda.pergunta')
+def concordar_pergunta_handler(concordar):
+    pergunta_service.concordar_pergunta(concordar['id_pergunta'], concordar['id_usuario'])
+    sala = sala_service.listar_sala_id(concordar['id_sala'])
     ss = sala_schema.SalaSchema()
     perguntas = ss.jsonify(sala).json['perguntas']
     emit('recebe.perguntas', perguntas, json=True , broadcast=True)
