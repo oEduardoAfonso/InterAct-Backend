@@ -1,6 +1,7 @@
 from flask.helpers import make_response
 from flask_restful import Resource
-from app import api
+from app import api, io
+from flask_socketio import emit
 from ..schemas import sala_schema, usuario_schema
 from ..services import sala_service, usuario_service
 from flask import request, jsonify
@@ -62,6 +63,14 @@ class BanirParticipante(Resource):
         sala = sala_service.banir_participante(id, id_usuario)
         ss = sala_schema.SalaSchema()
         return make_response(ss.jsonify(sala), 200)
+
+@io.on('envia.banido')
+def banir_usuario_handler(usuario):
+    sala = sala_service.banir_participante(usuario['id_sala'], usuario['id_usuario'])
+    sala = sala_service.listar_sala_id(usuario['id_sala'])
+    ss = sala_schema.SalaSchema()
+    banidos = ss.jsonify(sala).json['banidos']
+    emit('recebe.banidos', banidos, json=True , broadcast=True)
 
 api.add_resource(SalaList, '/salas')
 api.add_resource(SalaDetail, '/salas/<int:id>')
