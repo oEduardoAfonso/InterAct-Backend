@@ -3,7 +3,12 @@ from ..models import sala_model
 from app import db
 
 def cadastrar_sala(sala):
-    sala_new = sala_model.Sala(id_moderador=sala['id_moderador'])
+    sala_new = sala_model.Sala(
+        id_moderador=sala['id_moderador'],
+        nome_sala=sala['nome_sala'],
+        descricao_sala=sala['descricao_sala'],
+        tempo_mensagem=0,
+        )
 
     db.session.add(sala_new)
     db.session.commit()
@@ -18,9 +23,14 @@ def listar_sala_id(id):
     return sala
 
 def editar_sala(sala_bd, sala):
-    sala_new = sala_model.Sala(id_moderador=sala['id_moderador'])
+    
+    if sala['nome_sala'] is not None:
+        sala_bd.nome_sala = sala['nome_sala']
+    if sala['descricao_sala'] is not None:
+        sala_bd.descricao_sala = sala['descricao_sala']
+    if sala['tempo_mensagem'] is not None:
+        sala_bd.tempo_mensagem = sala['tempo_mensagem']
 
-    sala_bd.id_moderador = sala_new.id_moderador
     db.session.commit()
 
 def deletar_sala(sala):
