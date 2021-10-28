@@ -20,6 +20,23 @@ class Sala(db.Model):
         unique=True,
     )
 
+    nome_sala = db.Column(
+        'nome_sala',
+        db.String(30),
+        nullable=False,
+    )
+
+    descricao_sala = db.Column(
+        'descricao_sala',
+        db.String(150),
+    )
+
+    tempo_mensagem = db.Column(
+        'tempo_mensagem',
+        db.Integer,
+        nullable=False,
+    )
+
     moderador = db.relationship('Usuario', foreign_keys=[id_moderador], backref=backref('sala_modera', cascade='all,delete'))
 
 class Participantes_Banidos(db.Model):
