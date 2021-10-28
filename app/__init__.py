@@ -17,4 +17,4 @@ io = SocketIO(app, cors_allowed_origins='*')
 migrate = Migrate(app, db)
 CORS(app)
 
-from .views import usuario_view, sala_view, pergunta_view
+from .views import usuario_view, sala_view, pergunta_view, mensagem_view
