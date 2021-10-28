@@ -1,5 +1,5 @@
 from app import ma
-from . import usuario_schema, pergunta_schema
+from . import usuario_schema, pergunta_schema, mensagem_schema
 from ..models import sala_model
 from marshmallow import fields, validate
 
@@ -28,5 +28,11 @@ class SalaSchema(ma.SQLAlchemySchema):
     perguntas = fields.List(
         fields.Nested(
             pergunta_schema.PerguntaSchema(exclude=['id_sala'])
+        )
+    )
+
+    mensagens = fields.List(
+        fields.Nested(
+            mensagem_schema.MensagemSchema(exclude=['id_sala'])
         )
     )
